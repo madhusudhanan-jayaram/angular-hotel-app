@@ -1,39 +1,48 @@
+<h2 class="text-center"> Create a new reservation </h2>
 <form [formGroup]="reservationForm">
-    <div>
-        <label for="name">Name:</label>
-        <input type="text" id="name" formControlName="name" required>
-      <div *ngIf="reservationForm.get('name')?.invalid && reservationForm.get('name')?.touched">
-        <small>Name is required.</small>
-      </div>
-
+    <div class="row mb-3" >
+        <div class="col">
+            <label class="form-label" for="name">Name:</label>
+            <input class="form-control" type="text" id="name" formControlName="name" required>
+            <div *ngIf="reservationForm.get('name')?.invalid && reservationForm.get('name')?.touched">
+                <small class="text-danger">Name is required.</small>
+            </div>
+        </div>
+        <div class="col">
+            <label class="form-label" for="email">Email:</label>
+            <input class="form-control" type="email" id="email" formControlName="email" required>
+            <div *ngIf="reservationForm.get('email')?.invalid && reservationForm.get('email')?.touched">
+                <small class="text-danger">Email is required.</small>
+            </div>
+        </div>
     </div>
-    <div>
-        <label for="email">Email:</label>
-        <input type="email" id="email" formControlName="email" required>
-      <div *ngIf="reservationForm.get('email')?.invalid && reservationForm.get('email')?.touched">
-        <small>Email is required.</small>
-      </div>
+  
+    <div class="row mb-3" >
+        <div class="col">
+        <label class="form-label" for="checkInDate">Check-in Date:</label>
+        <input class="form-control" type="date" id="checkInDate" formControlName="checkInDate" required>
+        <div *ngIf="reservationForm.get('checkInDate')?.invalid && reservationForm.get('checkInDate')?.touched">
+            <small class="text-danger">Check-in Date is required.</small>
+        </div>
     </div>
-    <div>
-        <label for="checkInDate">Check-in Date:</label>
-        <input type="date" id="checkInDate" formControlName="checkInDate" required>
-      <div *ngIf="reservationForm.get('checkInDate')?.invalid && reservationForm.get('checkInDate')?.touched">
-        <small>Check-in Date is required.</small>
-      </div>
+        <div class="col">
+        <label class="form-label" for="checkOutDate">Check-out Date:</label>
+        <input class="form-control" type="date" id="checkOutDate" formControlName="checkOutDate" required>
+         <div *ngIf="reservationForm.get('checkOutDate')?.invalid && reservationForm.get('checkOutDate')?.touched">
+            <small class="text-danger">Check-out Date is required.</small>
+        </div>
     </div>
-    <div>
-        <label for="checkOutDate">Check-out Date:</label>
-        <input type="date" id="checkOutDate" formControlName="checkOutDate" required>
-      <div *ngIf="reservationForm.get('checkOutDate')?.invalid && reservationForm.get('checkOutDate')?.touched">
-        <small>Check-out Date is required.</small>
-      </div>
     </div>
-    <div>
-        <label for="roomNumber">Room Number:</label>
-        <input type="text" id="roomNumber" formControlName="roomNumber" required>
-      <div *ngIf="reservationForm.get('roomNumber')?.invalid && reservationForm.get('roomNumber')?.touched">
-        <small>Room Number is required.</small>
-      </div>
+    
+    <div class="row mb-3" >
+        <div class="col-3">
+            <label class="form-label" for="roomNumber">Room Number:</label>
+            <input class="form-control" type="text" id="roomNumber" formControlName="roomNumber" required>
+            <div *ngIf="reservationForm.get('roomNumber')?.invalid && reservationForm.get('roomNumber')?.touched">
+                <small class="text-danger">Room Number is required.</small>
+            </div>
+        </div>
+      
     </div>
-  <button type="submit" [disabled]="reservationForm.invalid" (click)="onSubmit()">Submit Reservation</button>
+  <button class="btn btn-primary" type="submit" [disabled]="reservationForm.invalid" (click)="onSubmit()">Submit Reservation</button>
 </form>
