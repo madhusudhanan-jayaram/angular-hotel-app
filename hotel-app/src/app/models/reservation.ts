@@ -2,7 +2,7 @@ export interface Reservation {
     id: string,
     checkInDate: Date,
     checkOutDate: Date,
-    guestName: string,
-    guestEMail: string,
-    roomnumber: number
+    name: string,
+    email: string,
+    roomNumber: string
 }

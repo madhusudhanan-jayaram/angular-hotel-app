@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReservationService } from '../reservation/reservation.service';
 import { Reservation } from '../models/reservation';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-reservation-form',
@@ -15,7 +16,9 @@ import { Reservation } from '../models/reservation';
 })
 export class ReservationFormComponent {
   reservationForm: FormGroup = new FormGroup({});
-  constructor(private formBuilder: FormBuilder, private reservationService  : ReservationService) {
+  constructor(private formBuilder: FormBuilder, 
+              private reservationService  : ReservationService,
+              private router: Router) {
    
   }
 
@@ -37,6 +40,7 @@ export class ReservationFormComponent {
       this.reservationService.addReservation(this.reservationForm.value);
       console.log('Reservation added successfully');
       this.reservationForm.reset(); // Reset the form after submission
+      this.router.navigate(['/list']); // Navigate to the reservation list
     } else {
       console.log('Form is invalid');
     }
