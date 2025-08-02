@@ -16,6 +16,8 @@ export class ReservationService {
 
   //CRUD Operations
   addReservation(reservation: Reservation): void {
+    reservation.id = new Date().getTime().toString(); // Generate a unique ID based on timestamp
+    console.log('Adding reservation:', reservation);
     this.reservations.push(reservation);
     localStorage.setItem('reservations', JSON.stringify(this.reservations));
   }

@@ -11,6 +11,10 @@ export const routes = [
   {
     path: 'reservation',
     loadComponent: () => import('./reservation-form/reservation-form.component').then(m => m.ReservationFormComponent)
+  },
+  {
+    path: 'edit/:id',
+    loadComponent: () => import('./reservation-form/reservation-form.component').then(m => m.ReservationFormComponent)
   }
   // Add more routes here
 ];
