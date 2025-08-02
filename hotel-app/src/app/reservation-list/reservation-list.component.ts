@@ -4,11 +4,12 @@ import { ReservationService } from '../reservation/reservation.service';
 import {DatePipe} from '@angular/common';
 import {CommonModule} from '@angular/common';
 import { HomeComponent } from "../home/home.component";
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-reservation-list',
   standalone: true,
-  imports: [CommonModule, DatePipe, HomeComponent],
+  imports: [CommonModule, DatePipe, HomeComponent, RouterModule],
   templateUrl: './reservation-list.component.html',
   styleUrl: './reservation-list.component.css'
 })
@@ -33,9 +34,5 @@ export class ReservationListComponent {
     console.log('Reservation deleted successfully. Updated list:', this.reservations);
   }
 
-  editReservation(id: string) {
-    console.log('Editing reservation with ID:', id);
-    // Logic to navigate to the edit form can be added here
-    // For example, using Angular Router to navigate to the edit page
-  }
+
 }

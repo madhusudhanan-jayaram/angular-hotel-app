@@ -1,18 +1,20 @@
-<h2 class="text-center"> Create a new reservation </h2>
+<app-home></app-home>
+<h2 class="text-center"> Create/Update a new reservation </h2>
 <form [formGroup]="reservationForm">
     <div class="row mb-3" >
         <div class="col">
-            <label class="form-label" for="name">Name:</label>
-            <input class="form-control" type="text" id="name" formControlName="name" placeholder="John Doe" required>
-            <div *ngIf="reservationForm.get('name')?.invalid && reservationForm.get('name')?.touched">
+            <label class="form-label" for="guestName">Name:</label>
+            <input class="form-control" type="text" id="guestName" formControlName="guestName" placeholder="John Doe" required>
+            <div *ngIf="reservationForm.get('guestName')?.invalid && reservationForm.get('guestName')?.touched">
                 <small class="text-danger">Name is required.</small>
             </div>
         </div>
         <div class="col">
-            <label class="form-label" for="email">Email:</label>
-            <input class="form-control" type="email" id="email" formControlName="email" placeholder="john.doe@example.com" required>
-            <div *ngIf="reservationForm.get('email')?.invalid && reservationForm.get('email')?.touched">
-                <small class="text-danger">Email is required.</small>
+            <label class="form-label" for="guestEmail">Email:</label>
+            <input class="form-control" type="email" id="guestEmail" formControlName="guestEmail" placeholder="john.doe@example.com" required>
+            <div *ngIf="reservationForm.get('guestEmail')?.invalid && reservationForm.get('guestEmail')?.touched">
+                <small *ngIf="reservationForm.get('guestEmail')?.hasError('required')" class="text-danger">Email is required.</small>
+                <small *ngIf="reservationForm.get('guestEmail')?.hasError('email')" class="text-danger">Please enter a valid email address.</small>
             </div>
         </div>
     </div>
