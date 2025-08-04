@@ -14,11 +14,11 @@
   </thead>
   <tbody>
     <tr *ngFor="let reservation of reservations">
-      <td>{{ reservation.name }}</td>
+      <td>{{ reservation.guestName }}</td>
       <td>{{ reservation.roomNumber }}</td>
       <td>{{ reservation.checkInDate | date:'shortDate' }}</td>
       <td>{{ reservation.checkOutDate | date:'shortDate' }}</td>
-      <td>{{ reservation.email }}</td>
+      <td>{{ reservation.guestEmail }}</td>
       <td>
         <button class="btn btn-danger mx-1" (click)="deleteReservation(reservation.id)">Delete</button>
         <button class="btn btn-primary mx-1 " [routerLink]="['/edit', reservation.id]">Edit</button>
