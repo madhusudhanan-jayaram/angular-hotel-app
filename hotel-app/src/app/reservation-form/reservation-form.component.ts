@@ -37,10 +37,11 @@ export class ReservationFormComponent {
     let id = this.route.snapshot.paramMap.get('id');
     if (id) {
       // If an ID is present, fetch the reservation details for editing
-      const reservation = this.reservationService.getReservationById(id);
-      if (reservation) {
-        this.reservationForm.patchValue(reservation);
-      }
+      const reservation = this.reservationService.getReservationById(id).subscribe(reservation => {
+        if (reservation) {
+          this.reservationForm.patchValue(reservation);
+        }
+      });
     }
   }
   onSubmit(): void {

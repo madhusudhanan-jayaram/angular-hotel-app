@@ -25,8 +25,8 @@ export class ReservationService {
     return this.http.get<Reservation[]>(this.apiUrl + '/reservations');
   }
 
-  getReservationById(id: string): Reservation | undefined {
-    return this.reservations.find(reservation => reservation.id === id);
+  getReservationById(id: string): Observable<Reservation | undefined> {
+    return this.http.get<Reservation>(this.apiUrl + '/reservation/' + id);
   }
 
   updateReservation(id: string, updatedReservation: Reservation): void {
@@ -36,13 +36,9 @@ export class ReservationService {
     }
 
   }
-  
-  deleteReservation(id: string): void {
-    let index = this.reservations.findIndex(reservation => reservation.id === id);
-    if (index !== -1) {
-      this.reservations.splice(index, 1);
-    }
 
+  deleteReservation(id: string): Observable<Reservation> {
+    return this.http.delete<Reservation>(this.apiUrl + '/reservation/' + id);
   }
 
 
