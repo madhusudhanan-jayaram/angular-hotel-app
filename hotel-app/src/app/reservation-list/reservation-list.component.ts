@@ -19,18 +19,24 @@ export class ReservationListComponent {
   constructor(private reservationService: ReservationService) {}
 
   ngOnInit(): void {
-    this.reservations = this.reservationService.getReservations();
-    if (this.reservations.length === 0) {
-      console.log('No reservations found.'); 
-    } else {
-      console.log('Reservations loaded:', this.reservations);
-    }
+    this.reservationService.getReservations().subscribe({
+      next: (reservations) => {
+        this.reservations = reservations;
+        if (this.reservations.length === 0) {
+          console.log('No reservations found.');
+        } else {
+          console.log('Reservations loaded:', this.reservations);
+        }
+      },
+      error: (err) => {
+        console.error('Error loading reservations:', err);
+      }
+    });
   }
 
   deleteReservation(id: string) {
     console.log('Deleting reservation with ID:', id);
     this.reservationService.deleteReservation(id);
-    this.reservations = this.reservationService.getReservations();
     console.log('Reservation deleted successfully. Updated list:', this.reservations);
   }
 
